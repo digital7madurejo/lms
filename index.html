@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LMS Digitalisasi Pembelajaran SD</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6fb;--sf:#fff;--tx:#0f1b3d;--mu:#5b6682;--pr:#2447d6;--ac:#0ea5a4;--ok:#15803d;--er:#c0392b;--bd:#e2e7f2;--hero:linear-gradient(135deg,#1b2f8f,#2447d6 55%,#0ea5a4);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--sf:#141b33;--tx:#e8ecf8;--mu:#9aa6c4;--pr:#7c96ff;--bd:#252f52;--ok:#4ade80;--er:#f87171;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1020;--sf:#141b33;--tx:#e8ecf8;--mu:#9aa6c4;--pr:#7c96ff;--bd:#252f52;--ok:#4ade80;--er:#f87171;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 15px/1.65 'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:10}
+h1,h2,h3{line-height:1.25;margin:0 0 .5em}h1{font-size:1.9rem;font-weight:800}h2{font-size:1.4rem;font-weight:800}h3{font-size:1.05rem;font-weight:700;margin-top:1.4em}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--sf);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:12px;padding:12px 20px}
+.logo{font-weight:800;color:var(--pr);flex:1;display:flex;gap:8px;align-items:center}.logo i{font-style:normal;background:var(--hero);color:#fff;border-radius:9px;padding:2px 8px}
+.wrap{max-width:900px;margin:0 auto;padding:24px 18px 60px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:22px;margin-bottom:14px}
+.btn{border:0;border-radius:10px;padding:10px 18px;font:600 14px inherit;font-family:inherit;background:var(--pr);color:#fff;cursor:pointer}
+.btn.g{background:transparent;color:var(--pr);border:1px solid var(--bd)}.btn:disabled{opacity:.45;cursor:not-allowed}
+input{width:100%;padding:11px 13px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit;margin:4px 0 12px}
+label{font-size:13px;font-weight:600;color:var(--mu)}
+.auth{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.hero{background:var(--hero);color:#fff;padding:48px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.hero p{opacity:.9;margin:0}.hero ul{padding-left:18px;opacity:.95}
+.form{display:flex;align-items:center;justify-content:center;padding:28px}.form>div{width:100%;max-width:370px}
+.tabs{display:flex;gap:6px;background:var(--bg);padding:4px;border-radius:12px;margin-bottom:18px}.tabs button{flex:1;border:0;padding:9px;border-radius:9px;background:none;color:var(--mu);font:600 14px inherit;font-family:inherit;cursor:pointer}.tabs .on{background:var(--sf);color:var(--pr)}
+.err{color:var(--er);font-size:13px;min-height:20px;margin-bottom:6px}
+.bar{height:10px;background:var(--bd);border-radius:9px;overflow:hidden}.bar b{display:block;height:100%;background:var(--hero);transition:width .5s}
+.stat{background:var(--hero);color:#fff;border-radius:18px;padding:24px;margin-bottom:18px}.stat .bar{background:#ffffff40;margin-top:12px}.stat .bar b{background:#fff}
+.mod{display:flex;gap:14px;align-items:center}.mod .n{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-weight:800;background:var(--bg);color:var(--pr);flex:none}
+.mod.lock{opacity:.55}.mod .in{flex:1}.mod small{color:var(--mu)}
+.tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--bg);color:var(--mu)}.tag.ok{color:var(--ok)}.tag.op{color:var(--pr)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.grid div,.note{background:var(--bg);border-radius:12px;padding:12px 14px}
+.note{border-left:4px solid var(--ac);margin:14px 0}
+.q{margin-bottom:20px}.q p{font-weight:600;margin:0 0 8px}
+.o{display:block;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;margin-bottom:6px;cursor:pointer}.o input{width:auto;margin:0 8px 0 0}.o.bad{border-color:var(--er);background:#c0392b14}
+.res{text-align:center;padding:26px}.res b{font-size:3rem;display:block}
+canvas{width:100%;border-radius:10px;border:1px solid var(--bd)}
+@media(max-width:760px){.auth{grid-template-columns:1fr}.hero{padding:28px}}
+.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ti{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--hero);color:#fff;flex:none;display:block;margin-bottom:8px;box-shadow:0 6px 14px #2447d62e}
+.qh{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}.qh .ti{margin:0}.qh p{margin:0;padding-top:8px}
+.mod .n{width:50px;height:50px;background:linear-gradient(135deg,#2447d61f,#0ea5a42b)}.mod .n .ic{width:24px;height:24px}
+.card{border-radius:18px;box-shadow:0 1px 2px #0f1b3d0f,0 10px 28px #0f1b3d0b}.card li{margin:5px 0}
+.card h3{display:flex;align-items:center;gap:9px}.card h3::before{content:"";width:5px;height:1.1em;border-radius:3px;background:linear-gradient(var(--pr),var(--ac))}
+.top{backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--bd)}
+.btn{box-shadow:0 6px 16px #2447d633;transition:transform .15s}.btn:hover{transform:translateY(-1px)}.btn.g{box-shadow:none}
+.grid div{border:1px solid var(--bd);transition:transform .15s}.grid div:hover{transform:translateY(-2px)}
+.o:has(input:checked){border-color:var(--pr);background:#2447d614}
+.sc{color:#fff;display:block}.hero{position:relative;overflow:hidden}.hero .sc{max-width:340px;margin-bottom:10px}
+.mh{background:var(--hero);color:#fff;border-radius:22px;padding:28px;display:flex;gap:20px;align-items:center;justify-content:space-between;margin:14px 0}
+.mh h1{font-size:1.7rem}.mh .tag{background:#ffffff2e;color:#fff}.mh .sc{width:300px;max-width:42%;flex:none}
+@media(max-width:760px){.mh{flex-direction:column;align-items:flex-start}.mh .sc{max-width:100%;width:100%}}
+</style></head>
+<body><svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="laptop" viewBox="0 0 24 24"><path d="M4 6h16v10H4zM2 19h20"/></symbol>
+<symbol id="board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4M7 12l3-3 2 2 4-4"/></symbol>
+<symbol id="usb" viewBox="0 0 24 24"><rect x="7" y="9" width="10" height="12" rx="2"/><path d="M9 9V3h6v6M10 6h.01M14 6h.01"/></symbol>
+<symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+<symbol id="users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3.5-5.500 7-5.500s7 2 7 5.500"/><circle cx="17" cy="9" r="2.500"/><path d="M17 14.500c3 0 5 1.800 5 4.500"/></symbol>
+<symbol id="wifioff" viewBox="0 0 24 24"><path d="M2 8.800a15 15 0 0 1 20 0M5 12.500a10 10 0 0 1 14 0M8.500 16a5 5 0 0 1 7 0M3 3l18 18"/><circle cx="12" cy="19.500" r=".8"/></symbol>
+<symbol id="apps" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+<symbol id="touch" viewBox="0 0 24 24"><path d="M9 11V5a1.500 1.500 0 0 1 3 0v5m0-1.500a1.500 1.500 0 0 1 3 0V11m0-1a1.500 1.500 0 0 1 3 0v5c0 4-2 6-6 6h-1c-3 0-4-1.500-5.500-4L4 14c-.5-1 .8-2 1.700-1.200L9 15"/></symbol>
+<symbol id="pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19zM14 7l3 3"/></symbol>
+<symbol id="ruler" viewBox="0 0 24 24"><path d="M3 16L16 3l5 5L8 21zM7 12l2 2M10 9l2 2M13 6l2 2"/></symbol>
+<symbol id="plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+<symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="folder" viewBox="0 0 24 24"><path d="M3 6h6l2 2h10v11H3z"/></symbol>
+<symbol id="clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM8.500 13l2.500 2.500 5-5"/></symbol>
+<symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.500"/><circle cx="18" cy="6" r="2.500"/><circle cx="18" cy="18" r="2.500"/><path d="M8.200 11l7.600-3.800M8.200 13l7.600 3.800"/></symbol>
+<symbol id="file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4"/></symbol>
+<symbol id="dual" viewBox="0 0 24 24"><rect x="2" y="5" width="12" height="9" rx="1"/><rect x="10" y="10" width="12" height="9" rx="1"/></symbol>
+<symbol id="bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.500 10.900c.6.5 1 1.200 1 2.100h5c0-.9.4-1.600 1-2.100A6 6 0 0 0 12 3z"/></symbol>
+<symbol id="flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="shape" viewBox="0 0 24 24"><path d="M3 20L12 4l9 16z"/></symbol>
+</defs></svg>
+<div id="app"></div>
+<script>
+const $=s=>document.querySelector(s),mem={};
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):(mem[k]??d)}catch(e){return mem[k]??d}},set(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const PASS=80;
+const MX=[{g:['user','users','laptop','board','usb'],qi:['board','laptop','wifioff','usb','user'],h:['user','laptop','board','users']},
+{g:['usb','usb','share','folder','file'],qi:['usb','folder','wifioff','usb','file'],h:['usb','laptop','folder']},
+{g:['folder','clip','pen','flask','code','chat'],qi:['flask','shape','code','chat','wifioff'],h:['apps','flask','code','chat']},
+{g:['touch','board','ruler','pen','plug','dual','share','file'],qi:['touch','touch','ruler','plug','pen'],h:['touch','pen','ruler','plug']},
+{g:['dual','dual'],qi:['dual','dual','wifioff','eye','clip'],h:['wifioff','dual','eye','clip']}];
+const ic=(n,s=24,c='')=>`<svg class="ic ${c}" width="${s}" height="${s}" viewBox="0 0 24 24"><use href="#${n}"/></svg>`;
+const scene=l=>{const n=l.length,st=256/(n-1),P=l.map((_,k)=>[k*st,k%2?66:20]);
+ return`<svg class="sc" viewBox="0 0 320 150"><circle cx="270" cy="30" r="60" fill="#fff" fill-opacity=".08"/><circle cx="40" cy="130" r="40" fill="#fff" fill-opacity=".08"/><path d="M${P.map(p=>(p[0]+32)+' '+(p[1]+32)).join('L')}" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2" stroke-dasharray="5 6"/>${P.map((p,k)=>`<rect x="${p[0]}" y="${p[1]}" width="64" height="64" rx="18" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".55"/><svg class="ic" x="${p[0]+16}" y="${p[1]+16}" width="32" height="32" viewBox="0 0 24 24"><use href="#${l[k]}"/></svg>`).join('')}</svg>`};
+const M=[
+{t:"Ekosistem Digital Pembelajaran",d:"Peran guru, murid, laptop, PID, dan media penyimpanan",
+b:`<h3>Tujuan</h3><p>Peserta mampu mengoperasikan perangkat digital dasar dan menganalisis pemanfaatannya untuk supervisi pembelajaran digital di satuan pendidikan.</p>
+<h3>Indikator Keberhasilan</h3><ul><li>Mengoperasikan dan menghubungkan laptop, papan interaktif digital (PID), serta media penyimpanan eksternal.</li><li>Mengakses dan menampilkan konten Ruang Murid secara luring.</li><li>Memetakan fungsi perangkat dalam ekosistem pembelajaran sekolah.</li><li>Menganalisis penggunaan perangkat secara interaktif dan pasif sebagai acuan supervisi guru.</li></ul>
+<h3>Orkestrasi Kelas Terkoneksi</h3><div class="grid"><div><b>Guru</b><br>Orkestrator pembelajaran, memegang kendali skenario.</div><div><b>Murid</b><br>Partisipasi aktif: kreator, bukan sekadar penonton.</div><div><b>Laptop</b><br>Pusat komputasi: memproses data dan menjalankan aplikasi.</div><div><b>PID</b><br>Kanvas kolaborasi, jembatan visual interaktif ke murid.</div><div><b>Media Penyimpanan Eksternal</b><br>Brankas konten, sumber luring Ruang Murid.</div></div>
+<div class="note"><b>Catatan Kunci.</b> Integrasi laptop, PID, dan media eksternal membentuk orkestrasi kelas yang beroperasi penuh secara luring tanpa ketergantungan pada internet.</div>
+<h3>Fakta atau Miskonsepsi?</h3><ul><li>“PID hanyalah proyektor besar” → <b>Miskonsepsi</b>. PID adalah kanvas interaktif dua arah.</li><li>“Laptop wajib terhubung internet agar PID berguna” → <b>Miskonsepsi</b>.</li><li>“Jika internet mati, pembelajaran digital terhenti” → <b>Miskonsepsi</b>. Konten Ruang Murid tetap dapat diakses luring.</li></ul>`,
+q:[["Apa peran PID dalam ekosistem digital pembelajaran?",["Kanvas kolaborasi interaktif dua arah","Proyektor besar satu arah","Tempat menyimpan seluruh file","Pengganti laptop guru"],0],["Laptop berperan sebagai …",["Brankas konten","Pusat komputasi","Kanvas kolaborasi","Jaringan internet"],1],["“Laptop wajib terhubung internet agar PID berguna.” Pernyataan ini adalah …",["Fakta","Miskonsepsi","Benar sebagian di sekolah dasar","Syarat mutlak"],1],["Media penyimpanan eksternal diibaratkan sebagai …",["Kanvas kolaborasi","Pusat komputasi","Brankas konten","Orkestrator"],2],["Dalam orkestrasi kelas terkoneksi, guru berperan sebagai …",["Penonton","Orkestrator pembelajaran","Pengguna pasif","Perangkat keras"],1]]},
+{t:"Media Penyimpanan Eksternal & Ruang Murid Offline",d:"Mengakses konten pembelajaran tanpa internet",
+b:`<h3>Fitur Media Penyimpanan Eksternal</h3><div class="grid"><div>1. Membaca flashdisk</div><div>2. Membaca SSD atau hard disk eksternal</div><div>3. Menyalin file antar media</div><div>4. Membuka konten pembelajaran dari media eksternal</div><div>5. Menyimpan hasil kerja ke media eksternal</div></div>
+<h3>Ruang Murid Offline</h3><p>Konten Ruang Murid dirancang tangguh dan tetap dapat diakses tanpa koneksi internet. Laptop dan PID beroperasi penuh secara luring melalui integrasi media penyimpanan lokal.</p>
+<div class="note"><b>Catatan Kunci.</b> Media penyimpanan eksternal adalah sumber luring bagi konten Ruang Murid, sehingga pembelajaran digital tetap berjalan di sekolah tanpa internet.</div>`,
+q:[["Manakah yang BUKAN fitur media penyimpanan eksternal?",["Membaca flashdisk","Menyalin file antar media","Menyimpan hasil kerja","Menyiarkan siaran televisi"],3],["Sumber luring konten Ruang Murid adalah …",["Media penyimpanan eksternal","Layar sentuh PID","Wireless screen sharing","Akun media sosial"],0],["Jika internet sekolah mati, pembelajaran digital sebaiknya …",["Dihentikan","Tetap berjalan dengan konten luring","Menunggu internet pulih","Beralih ke ceramah saja"],1],["Selain flashdisk, media yang dapat dibaca perangkat adalah …",["SSD atau hard disk eksternal","Kamera CCTV","Pengeras suara","Kabel listrik"],0],["Menyimpan hasil kerja ke media eksternal berguna untuk …",["Mempercepat internet","Mendokumentasikan hasil tanpa bergantung internet","Menghapus konten lama","Menambah layar PID"],1]]},
+{t:"Platform Pembelajaran melalui PID",d:"Rekomendasi platform dan tools pendukung",
+b:`<h3>Platform yang Dapat Dimanfaatkan melalui PID</h3><div class="grid"><div><b>Ruang Murid</b><br>Online dan Offline</div><div><b>Kuis & Gim</b><br>Wordwall, Quizizz/Wayground, Kahoot!, Nearpod, Liveworksheets</div><div><b>Desain & Presentasi</b><br>Canva for Education, Google Slides, Microsoft PowerPoint</div><div><b>Simulasi & Sains</b><br>PhET Simulation, Google Earth</div><div><b>Matematika & Koding</b><br>GeoGebra, Scratch</div><div><b>Kolaborasi & Video</b><br>Padlet, YouTube Edu</div></div>
+<div class="note">Pelajari penggunaan kontekstual tiap platform agar pemilihan tools sesuai tujuan pembelajaran, bukan sekadar mengikuti tren.</div>`,
+q:[["Platform simulasi sains interaktif adalah …",["PhET Simulation","Scratch","Padlet","Kahoot!"],0],["Platform geometri dan matematika dinamis adalah …",["Wordwall","GeoGebra","YouTube Edu","Nearpod"],1],["Platform pemrograman visual berbasis blok untuk anak adalah …",["Scratch","Google Earth","Canva","Quizizz"],0],["Dinding digital untuk berbagi ide dan kolaborasi adalah …",["GeoGebra","PhET","Padlet","Scratch"],2],["Platform yang dapat dipakai tanpa internet adalah …",["Kahoot!","Ruang Murid Offline","Padlet","Nearpod"],1]]},
+{t:"Fitur Papan Interaktif Digital",d:"Delapan kelompok fitur untuk praktik langsung",
+b:`<h3>Delapan Kelompok Fitur PID</h3><div class="grid"><div><b>1. Interaksi Sentuh</b><br>Multi-touch 5 titik, tulis dengan jari atau stylus, palm erase, talkback, zoom, drag and drop, rotasi objek.</div><div><b>2. Whiteboard Digital</b><br>Pena bebas, warna dan ketebalan, highlighter, penghapus, multi-halaman, sisip gambar dan bentuk, notes.</div><div><b>3. Alat Matematika & Geometri</b><br>Penggaris, busur derajat, segitiga siku-siku dan sama kaki, ukur panjang dan sudut, bangun datar otomatis.</div><div><b>4. Anotasi & Penandaan</b><br>Menulis di atas dokumen, presentasi, gambar, video; highlight; simpan anotasi.</div><div><b>5. Konektivitas</b><br>HDMI, USB, Type-C, wireless screen sharing, mirroring laptop dan smartphone, touch back control, dual screen.</div><div><b>6. Presentasi & Pembelajaran</b><br>Layar penuh, multi-window, picture in picture, multimedia, video dan simulasi.</div><div><b>7. Kolaborasi</b><br>Multi-pengguna, tulis bersama, diskusi kelompok di whiteboard, berbagi tampilan.</div><div><b>8. Pengelolaan Dokumen</b><br>Buka PDF, Word, PowerPoint, Excel; tampilkan gambar, video, audio; ekspor ke PDF atau gambar.</div></div>
+<div class="note"><b>Catatan Kunci.</b> Laptop terhubung ke PID melalui mode <b>Duplicate</b> atau <b>Extended Display</b>, lalu dimanfaatkan dengan multi-touch, stylus, palm erase, dan anotasi langsung.</div>`,
+q:[["PID mendukung multi-touch hingga berapa titik sentuh bersamaan?",["2 titik","3 titik","5 titik","20 titik"],2],["Palm erase berarti menghapus dengan …",["Stylus","Telapak tangan","Tombol fisik","Perintah suara"],1],["Busur derajat digital termasuk kelompok fitur …",["Alat Matematika dan Geometri","Pengelolaan Dokumen","Kolaborasi","Konektivitas"],0],["HDMI, USB, dan Type-C termasuk fitur …",["Whiteboard","Konektivitas laptop dan perangkat lain","Anotasi","Interaksi sentuh"],1],["Menulis di atas video atau presentasi termasuk fitur …",["Anotasi dan Penandaan","Dual Screen","Ekspor dokumen","Talkback"],0]]},
+{t:"Supervisi & Skenario Krisis",d:"Mode tampilan, studi kasus, dan peta supervisi",
+b:`<h3>Skenario Krisis: Internet Terputus Total</h3><p>Pembelajaran digital harus tetap berjalan. Pilih mode tampilan yang sesuai:</p><div class="grid"><div><b>Extended Display</b><br>Laptop dan PID menjadi dua layar terpisah. Guru membaca skenario secara privat di laptop, murid melihat media interaktif di PID.</div><div><b>Duplicate Display</b><br>Tampilan laptop persis sama dengan PID. Terbaik untuk demonstrasi langkah aplikasi atau navigasi web.</div></div>
+<h3>Studi Kasus</h3><ul><li><b>Kasus 1:</b> sekolah tanpa internet namun memiliki media penyimpanan eksternal berisi konten, tetapi guru kesulitan memanfaatkannya. Strategi: latih guru mengakses konten luring dan jadwalkan praktik rutin.</li><li><b>Kasus 2:</b> SD Cahaya Bangsa kehilangan internet 2 bulan. Solusi sementara: gunakan laptop, PID, dan media eksternal secara luring.</li></ul>
+<h3>Fitur Pendukung Supervisi</h3><ol><li>Observasi penggunaan media digital</li><li>Dokumentasi aktivitas pembelajaran</li><li>Penyimpanan hasil pembelajaran</li><li>Analisis tingkat interaktivitas pembelajaran</li><li>Pemantauan keterlibatan peserta didik</li><li>Pemanfaatan platform interaktif</li><li>Integrasi sumber belajar digital</li></ol>
+<div class="note"><b>Refleksi.</b> Tulis satu hal baru yang Anda pahami, kelompok fitur yang akan dipelajari ulang, dan langkah nyata dua minggu ke depan di sekolah Anda.</div>`,
+q:[["Guru ingin membaca skenario privat di laptop sementara murid melihat media di PID. Mode yang tepat …",["Extended Display","Duplicate Display","Mirroring terbalik","Mode hemat daya"],0],["Mode terbaik untuk mendemonstrasikan langkah-langkah aplikasi adalah …",["Extended Display","Duplicate Display","Dual boot","Safe mode"],1],["Saat internet putus total, solusi yang tepat adalah …",["Menunda pembelajaran","Memakai laptop, PID, dan media eksternal secara luring","Meliburkan sekolah","Menunggu teknisi"],1],["Contoh fitur pendukung supervisi pembelajaran adalah …",["Observasi penggunaan media digital","Mengganti kurikulum","Menambah jam pelajaran","Mengunci akun murid"],0],["Analisis penggunaan perangkat secara interaktif dan pasif bertujuan sebagai …",["Hukuman bagi guru","Acuan supervisi guru","Syarat membeli perangkat","Pengganti penilaian murid"],1]]}
+];
+let users=ls.get('lms_u',{}),cur=ls.get('lms_s',null),mode='masuk',view='dash',mi=0,ans=[],res=null,msg='';
+const U=()=>users[cur],save=()=>ls.set('lms_u',users),sc=i=>U().p[i],done=i=>(sc(i)??-1)>=PASS;
+const open=i=>i==0||done(i-1),nDone=()=>M.filter((_,i)=>done(i)).length;
+const avg=()=>Math.round(M.reduce((a,_,i)=>a+(sc(i)||0),0)/M.length);
+async function hs(s){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('lms'+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){return btoa(unescape(encodeURIComponent(s)))}}
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function auth(){const v=id=>$('#'+id)?.value.trim()||'',e=v('em').toLowerCase(),p=$('#pw').value;
+ if(!/^\S+@\S+\.\S+$/.test(e)){msg='Email tidak valid.';return go()}
+ if(p.length<6){msg='Kata sandi minimal 6 karakter.';return go()}
+ const h=await hs(p);
+ if(mode=='daftar'){const n=v('nm'),s=v('sk');if(!n){msg='Nama lengkap wajib diisi.';return go()}
+  if(users[e]){msg='Email sudah terdaftar. Silakan masuk.';return go()}
+  users[e]={n,s,h,p:{},at:null};save()}
+ else if(!users[e]||users[e].h!==h){msg='Email atau kata sandi salah.';return go()}
+ cur=e;ls.set('lms_s',e);msg='';view='dash';go()}
+function out(){cur=null;ls.set('lms_s',null);view='dash';go()}
+function sw(m){mode=m;msg='';go()}
+function show(v,i){view=v;if(i!=null)mi=i;ans=[];res=null;go();scrollTo(0,0)}
+function pick(q,o){ans[q]=o}
+function submit(){const m=M[mi];if(m.q.some((_,i)=>ans[i]==null)){msg='Jawab semua soal terlebih dahulu.';return go()}
+ msg='';const ok=m.q.map((q,i)=>ans[i]==q[2]),s=Math.round(ok.filter(Boolean).length/m.q.length*100);
+ res={s,ok};const u=U();if(s>(u.p[mi]??-1))u.p[mi]=s;
+ if(nDone()==M.length&&!u.at)u.at=new Date().toISOString();save();go();scrollTo(0,0)}
+function head(){return`<div class="top"><div class="logo"><i>▲</i>LMS Digitalisasi SD</div><span style="font-size:13px;color:var(--mu)">${esc(U().n)}</span><button class="btn g" onclick="out()">Keluar</button></div>`}
+function vAuth(){const d=mode=='daftar';return`<div class="auth"><div class="hero">${scene(['laptop','board','usb','users'])}<h1>Belajar berjenjang, lulus bersertifikat.</h1><p>Bimbingan Teknis Nasional Digitalisasi Pembelajaran Jenjang SD: Eksplorasi Papan Interaktif Digital, Laptop, dan Media Penyimpanan Eksternal.</p><ul><li>5 sesi pembelajaran berurutan</li><li>Asesmen tiap sesi, lulus dengan nilai ${PASS} ke atas</li><li>Sertifikat dapat diunduh di akun Anda</li></ul></div>
+<div class="form"><div><div class="tabs"><button class="${d?'':'on'}" onclick="sw('masuk')">Masuk</button><button class="${d?'on':''}" onclick="sw('daftar')">Daftar Akun</button></div>
+${d?`<label>Nama lengkap (tercetak di sertifikat)</label><input id="nm" autocomplete="name"><label>Asal sekolah</label><input id="sk">`:''}
+<label>Email</label><input id="em" type="email" autocomplete="email"><label>Kata sandi</label><input id="pw" type="password" autocomplete="${d?'new-password':'current-password'}" onkeydown="event.key=='Enter'&&auth()">
+<div class="err">${msg}</div><button class="btn" style="width:100%" onclick="auth()">${d?'Buat Akun':'Masuk'}</button></div></div></div>`}
+function vDash(){const n=nDone(),all=n==M.length;return head()+`<div class="wrap"><div class="stat"><h2>Halo, ${esc(U().n)}</h2><div>${n} dari ${M.length} sesi lulus${n?` · rata-rata nilai ${avg()}`:''}</div><div class="bar"><b style="width:${n/M.length*100}%"></b></div></div>
+${all?`<div class="card" style="border-color:var(--ac)"><h3 style="margin-top:0">🎓 Selamat, Anda lulus semua sesi!</h3><p>Sertifikat Anda sudah tersedia.</p><button class="btn" onclick="show('cert')">Lihat & Unduh Sertifikat</button></div>`:''}
+${M.map((m,i)=>{const o=open(i),s=sc(i);return`<div class="card mod ${o?'':'lock'}"><div class="n">${done(i)?'✓':ic(MX[i].h[1],24)}</div><div class="in"><b>${m.t}</b><br><small>Sesi ${i+1} · ${m.d}</small></div>${o?`<span class="tag ${done(i)?'ok':'op'}">${s!=null?(done(i)?'Lulus ':'Belum lulus ')+s:'Terbuka'}</span><button class="btn ${done(i)?'g':''}" onclick="show('mod',${i})">${done(i)?'Ulangi':'Mulai'}</button>`:`<span class="tag">🔒 Terkunci</span>`}</div>`}).join('')}</div>`}
+function vMod(){const m=M[mi];return head()+`<div class="wrap"><button class="btn g" onclick="show('dash')">← Dasbor</button><div class="mh"><div><span class="tag">Sesi ${mi+1} dari ${M.length}</span><h1 style="margin:10px 0 6px">${m.t}</h1><div style="opacity:.9">${m.d}</div></div>${scene(MX[mi].h)}</div><div class="card">${m.b}</div><div class="card" style="text-align:center"><p>Sudah memahami materi? Capai nilai minimal ${PASS} untuk membuka sesi berikutnya.</p><button class="btn" onclick="show('quiz')">Mulai Asesmen</button></div></div>`}
+function vQuiz(){const m=M[mi],r=res,pass=r&&r.s>=PASS,last=mi==M.length-1;
+ return head()+`<div class="wrap"><h2>Asesmen: ${m.t}</h2>
+${r?`<div class="card res"><b style="color:var(--${pass?'ok':'er'})">${r.s}</b><h3>${pass?'Lulus! 🎉':'Belum lulus'}</h3><p>${pass?(last?'Seluruh sesi selesai. Sertifikat Anda sudah tersedia.':'Sesi berikutnya telah terbuka.'):'Nilai minimal '+PASS+'. Pelajari kembali materi, lalu coba lagi.'}</p>
+${pass?`<button class="btn" onclick="${last?"show('cert')":"show('dash')"}">${last?'Lihat Sertifikat':'Kembali ke Dasbor'}</button>`:`<button class="btn" onclick="show('mod',${mi})">Pelajari Materi</button> <button class="btn g" onclick="show('quiz')">Ulangi Asesmen</button>`}</div>`:''}
+${m.q.map((q,i)=>`<div class="card q"><div class="qh">${ic(MX[mi].qi[i],26,'ti')}<p>${i+1}. ${q[0]}</p></div>${q[1].map((o,j)=>`<label class="o ${r&&!r.ok[i]&&ans[i]==j?'bad':''}" style="color:var(--tx);font-weight:400"><input type="radio" name="q${i}" ${ans[i]==j?'checked':''} ${r?'disabled':''} onchange="pick(${i},${j})">${o}</label>`).join('')}${r&&!r.ok[i]?'<small style="color:var(--er)">Jawaban kurang tepat.</small>':''}</div>`).join('')}
+${r?'':`<div class="err">${msg}</div><button class="btn" onclick="submit()">Kirim Jawaban</button>`}</div>`}
+function vCert(){return head()+`<div class="wrap"><button class="btn g" onclick="show('dash')">← Dasbor</button><h2 style="margin-top:14px">Sertifikat Anda</h2><canvas id="cv" width="1600" height="1130"></canvas><p><button class="btn" onclick="dl()">Unduh Sertifikat (PNG)</button></p></div>`}
+function draw(){const c=$('#cv'),x=c.getContext('2d'),u=U(),W=1600,H=1130,F='"Plus Jakarta Sans",system-ui,sans-serif',L='letterSpacing' in x;
+ const T=(t,X,Y,f,col,al,sp)=>{x.font=f+' '+F;x.fillStyle=col;x.textAlign=al||'left';if(L)x.letterSpacing=(sp||0)+'px';x.fillText(t,X,Y);if(L)x.letterSpacing='0px'};
+ const R=(X,Y,w,h,r)=>{x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+w,Y,X+w,Y+h,r);x.arcTo(X+w,Y+h,X,Y+h,r);x.arcTo(X,Y+h,X,Y,r);x.arcTo(X,Y,X+w,Y,r);x.closePath()};
+ const dt=new Date(u.at||Date.now()),d=dt.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'}),no='LMS-'+dt.getFullYear()+'-'+[...cur].reduce((a,ch)=>(a*31+ch.charCodeAt(0))%1e6,7).toString().padStart(6,'0');
+ x.fillStyle='#f8faff';x.fillRect(0,0,W,H);
+ let g=x.createLinearGradient(0,0,470,H);g.addColorStop(0,'#12206b');g.addColorStop(.6,'#2447d6');g.addColorStop(1,'#0ea5a4');x.fillStyle=g;x.fillRect(0,0,470,H);
+ x.fillStyle='rgba(255,255,255,.07)';[[60,980,260],[450,120,190],[400,620,110]].forEach(a=>{x.beginPath();x.arc(a[0],a[1],a[2],0,7);x.fill()});
+ g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#f6d77a');g.addColorStop(1,'#c9a24b');x.fillStyle=g;x.fillRect(470,0,8,H);
+ R(60,70,64,64,18);x.fillStyle='rgba(255,255,255,.2)';x.fill();T('▲',92,116,'800 34px','#fff','center');T('LMS Digitalisasi SD',142,112,'800 26px','#fff');
+ x.fillStyle='#b98a2e';x.beginPath();x.moveTo(170,560);x.lineTo(130,730);x.lineTo(190,705);x.lineTo(230,575);x.fill();
+ x.fillStyle='#d9a93f';x.beginPath();x.moveTo(300,560);x.lineTo(340,730);x.lineTo(280,705);x.lineTo(240,575);x.fill();
+ g=x.createLinearGradient(115,350,355,590);g.addColorStop(0,'#f9e19a');g.addColorStop(1,'#c9a24b');x.fillStyle=g;x.beginPath();x.arc(235,470,122,0,7);x.fill();
+ x.strokeStyle='#fff';x.lineWidth=6;x.beginPath();x.arc(235,470,94,0,7);x.stroke();x.lineWidth=15;x.lineCap='round';x.lineJoin='round';x.beginPath();x.moveTo(190,472);x.lineTo(222,505);x.lineTo(284,432);x.stroke();
+ T('LULUS',235,830,'800 46px','#fff','center',8);T('Nilai rata-rata',235,885,'600 24px','rgba(255,255,255,.8)','center');T(String(avg()),235,975,'800 88px','#fff','center');
+ const X0=580;T('SERTIFIKAT KELULUSAN',X0,170,'800 26px','#0ea5a4','left',6);T('Dengan bangga diberikan kepada',X0,255,'500 30px','#5b6682');
+ let fs=96;do{x.font='800 '+fs+'px '+F;fs-=4}while(x.measureText(u.n).width>900);T(u.n,X0,365,'800 '+(fs+4)+'px','#0f1b3d');
+ g=x.createLinearGradient(X0,0,X0+190,0);g.addColorStop(0,'#2447d6');g.addColorStop(1,'#0ea5a4');R(X0,400,190,8,4);x.fillStyle=g;x.fill();
+ if(u.s)T(u.s,X0,462,'500 28px','#5b6682');
+ T('telah menyelesaikan seluruh sesi dan dinyatakan LULUS pada pelatihan',X0,545,'500 27px','#333');
+ T('Eksplorasi Papan Interaktif Digital, Laptop,',X0,610,'800 42px','#2447d6');T('dan Media Penyimpanan Eksternal',X0,664,'800 42px','#2447d6');
+ T('Bimbingan Teknis Nasional Digitalisasi Pembelajaran Jenjang Sekolah Dasar',X0,718,'500 22px','#5b6682');
+ M.forEach((_,i)=>{const X=X0+i*178,Y=785;R(X,Y,164,88,18);x.fillStyle='#eaf0ff';x.fill();T('SESI '+(i+1),X+82,Y+34,'700 17px','#5b6682','center',2);T(String(sc(i)),X+82,Y+72,'800 32px','#2447d6','center')});
+ x.fillStyle='#dfe5f3';x.fillRect(X0,960,940,2);
+ T('TANGGAL TERBIT',X0,1005,'700 17px','#8a94ad','left',2);T(d,X0,1045,'700 28px','#0f1b3d');
+ T('NOMOR SERTIFIKAT',1520,1005,'700 17px','#8a94ad','right',2);T(no,1520,1045,'700 28px','#0f1b3d','right')}
+function dl(){const a=document.createElement('a');a.download='Sertifikat-'+U().n.replace(/\s+/g,'_')+'.png';a.href=$('#cv').toDataURL('image/png');a.click()}
+function go(){const a=$('#app');if(!cur||!U()){cur=null;a.innerHTML=vAuth();return}
+ if(view=='cert'&&nDone()<M.length)view='dash';
+ a.innerHTML={dash:vDash,mod:vMod,quiz:vQuiz,cert:vCert}[view]();if(view=='mod')document.querySelectorAll('.grid').forEach(g=>[...g.children].forEach((d,k)=>d.insertAdjacentHTML('afterbegin',ic(MX[mi].g[k%MX[mi].g.length],22,'ti'))));if(view=='cert'){draw();document.fonts&&document.fonts.ready.then(draw)}}
+go();
+</script></body></html>
